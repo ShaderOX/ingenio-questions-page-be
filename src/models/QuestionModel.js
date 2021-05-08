@@ -10,6 +10,10 @@ const OptionSchema = new mongoose.Schema({
 });
 
 const QuestionSchema = new mongoose.Schema({
+  id: {
+    type: Number,
+    required: true,
+  },
   subject: {
     type: String,
     max: 256,
@@ -22,11 +26,16 @@ const QuestionSchema = new mongoose.Schema({
   },
   imageURL: {
     type: String,
+    min: 0,
     max: 1024,
-    required: true,
+    required: false,
   },
   options: {
     type: [OptionSchema],
+  },
+  correctOption: {
+    type: String,
+    required: true,
   },
   date: {
     type: Date,
